@@ -3,35 +3,111 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A visual guide to how recommendation algorithms shape what we watch, play, and believe.">
-  <title>Your Feed Is Not Neutral | Felix Santana</title>
+  <title>Recommendation Algorithms and My Feed</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-    :root{--ink:#091321;--paper:#fbfaf5;--yellow:#f7d84a;--coral:#ff6b55;--blue:#70b7ff;--green:#b9f48b;--muted:#59616b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif}.shell{width:min(1180px,calc(100% - 48px));margin:auto}.nav{height:84px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #09132129;font:600 12px DM Mono,monospace;letter-spacing:.12em}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand b{width:34px;height:34px;display:grid;place-items:center;background:var(--ink);color:var(--yellow)}.live{display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid #09132129;border-radius:99px;font-size:10px}.live i{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px #ff6b5524}.hero{min-height:720px;display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:70px;padding:72px 0 88px}.eyebrow{margin:0 0 18px;font:500 11px/1.4 DM Mono,monospace;letter-spacing:.14em}.eyebrow:before{content:"";display:inline-block;width:28px;height:2px;margin:0 10px 3px 0;background:var(--coral)}h1,h2,h3,p{margin-top:0}h1{margin-bottom:30px;font:700 clamp(64px,7vw,104px)/.88 Space Grotesk,sans-serif;letter-spacing:-.07em}h1 em{color:var(--coral);font-style:normal}.lede{max-width:650px;margin-bottom:34px;font-size:19px;line-height:1.65;color:#3c4653}.jump{display:inline-flex;gap:16px;padding-bottom:8px;border-bottom:2px solid;text-decoration:none;font:600 11px DM Mono,monospace;letter-spacing:.1em}.signal{position:relative;aspect-ratio:1;display:grid;place-items:center}.orbit{position:absolute;inset:7%;border:1px solid #09132126;border-radius:50%;animation:spin 28s linear infinite}.orbit.two{inset:18%;border-style:dashed;animation-direction:reverse;animation-duration:21s}.orbit:after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--coral);left:50%;top:-7px}.two:after{width:10px;height:10px;background:var(--blue)}@keyframes spin{to{transform:rotate(360deg)}}.disc{z-index:1;width:62%;aspect-ratio:1;border-radius:50%;background:var(--yellow);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:24px 24px var(--ink);transform:translate(-8px,-8px)}.disc strong{font:700 clamp(72px,9vw,128px)/.8 Space Grotesk;letter-spacing:-.08em}.disc span{margin-top:24px;text-align:center;font:600 11px/1.55 DM Mono;letter-spacing:.12em}.tag{position:absolute;z-index:2;padding:9px 12px;background:var(--paper);border:1px solid;box-shadow:4px 4px var(--ink);font:500 10px DM Mono;letter-spacing:.08em}.t1{top:9%;right:14%;transform:rotate(4deg)}.t2{top:29%;left:1%;transform:rotate(-7deg)}.t3{bottom:16%;right:0;transform:rotate(7deg)}.t4{bottom:6%;left:15%;transform:rotate(-3deg)}.personal{background:var(--ink);color:var(--paper)}.personal .shell{min-height:250px;display:grid;grid-template-columns:120px 1fr;align-items:center;gap:40px}.quote{color:var(--yellow);font:700 150px Space Grotesk;transform:translateY(30px)}.personal p{margin:0;max-width:930px;font:500 clamp(23px,2.3vw,34px)/1.45 Space Grotesk;letter-spacing:-.025em}.section{padding:120px 0}.heading{max-width:750px;margin-bottom:56px}.heading h2,.control h2{margin-bottom:18px;font:700 clamp(42px,5.2vw,72px)/1 Space Grotesk;letter-spacing:-.055em}.heading>p:last-child{color:var(--muted);font-size:17px;line-height:1.7}.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{min-height:325px;padding:24px;border:1px solid;display:flex;flex-direction:column}.card:last-child{background:var(--yellow);box-shadow:9px 9px var(--ink)}.num{font:500 10px DM Mono}.icon{width:70px;height:70px;margin:44px 0 30px;display:grid;place-items:center;background:var(--coral);font:700 40px sans-serif}.card:nth-child(2) .icon{background:var(--blue)}.card:nth-child(3) .icon{background:var(--green)}.card:last-child .icon{background:var(--ink);color:var(--yellow)}.card h3{margin-bottom:12px;font:700 21px Space Grotesk}.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}.dark{background:var(--ink);color:var(--paper)}.dark .eyebrow{color:var(--yellow)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.stat{min-height:340px;padding:32px;color:var(--ink);display:flex;flex-direction:column}.stat:nth-child(1){background:var(--yellow)}.stat:nth-child(2){background:var(--coral)}.stat:nth-child(3){background:var(--blue)}.stat strong{font:700 clamp(48px,5vw,72px) Space Grotesk;letter-spacing:-.06em}.stat p{margin:auto 0 28px;font:600 23px/1.3 Space Grotesk}.stat small{font:500 9px/1.4 DM Mono;letter-spacing:.08em}.note{max-width:930px;margin:64px auto 0;text-align:center;color:#b9c2ca;font-size:18px;line-height:1.75}.stakes{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid}.stakes article{padding:36px 34px 40px}.stakes article+article{border-left:1px solid}.stakes span{color:var(--coral);font:500 10px DM Mono}.stakes h3{margin:52px 0 14px;font:700 28px Space Grotesk}.stakes p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}.future{margin-top:68px;padding:34px 42px;border:1px solid;border-left:12px solid var(--coral);display:grid;grid-template-columns:210px 1fr;align-items:center;gap:42px}.future b{font:600 11px/1.5 DM Mono;letter-spacing:.1em}.future p{margin:0;font:500 22px/1.5 Space Grotesk}.control{padding:120px 0;background:var(--yellow)}.controlgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:100px}.controlintro{font-size:17px;line-height:1.7}.actions{margin:0;padding:0;list-style:none;border-top:1px solid}.actions li{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:25px 0;border-bottom:1px solid}.actions span{font:500 10px DM Mono}.actions strong{font:700 20px Space Grotesk}.actions p{margin:6px 0 0;font-size:14px;line-height:1.55}.footer{padding:62px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}.sources{margin:0;padding-left:18px}.sources li{margin-bottom:9px;font-size:11px;line-height:1.45}.sign{text-align:right}.sign b{font:700 18px Space Grotesk}.sign p{margin:9px 0 0;color:var(--muted);font:500 10px DM Mono}@media(max-width:850px){.hero,.controlgrid{grid-template-columns:1fr}.signal{width:min(570px,100%);margin:auto}.loop,.stats,.stakes{grid-template-columns:1fr}.stakes article+article{border-left:0;border-top:1px solid}.stat{min-height:250px}}@media(max-width:600px){.shell{width:calc(100% - 28px)}.hero{min-height:auto;padding:54px 0 70px}h1{font-size:59px}.lede{font-size:16px}.disc{box-shadow:13px 13px var(--ink)}.disc strong{font-size:68px}.disc span{margin-top:14px;font-size:8px}.tag{font-size:8px;padding:7px}.personal .shell{grid-template-columns:50px 1fr;gap:15px;padding:32px 0}.quote{font-size:90px}.personal p{font-size:20px}.section,.control{padding:82px 0}.future{grid-template-columns:1fr;gap:18px;padding:26px}.footer{grid-template-columns:1fr;gap:45px}.sign{text-align:left}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orbit{animation:none}}
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #222; font-family: Arial, Helvetica, sans-serif; line-height: 1.55; }
+    .page { width: min(950px, calc(100% - 30px)); margin: 30px auto; background: white; border: 1px solid #ccc; }
+    header { background: #081e3f; color: white; padding: 42px 45px; border-bottom: 10px solid #b6862c; }
+    header small { display: block; margin-bottom: 12px; font-weight: bold; letter-spacing: 1px; color: #ffcc33; }
+    h1 { margin: 0 0 14px; font-size: clamp(38px, 7vw, 68px); line-height: 1; }
+    header p { max-width: 720px; margin: 0; font-size: 18px; }
+    main { padding: 40px 45px; }
+    section { margin-bottom: 48px; }
+    h2 { margin: 0 0 18px; padding-bottom: 8px; border-bottom: 3px solid #b6862c; color: #081e3f; font-size: 28px; }
+    h3 { margin: 0 0 8px; color: #081e3f; }
+    p { margin: 0 0 14px; }
+    .intro { padding: 22px; background: #fff8dd; border-left: 6px solid #b6862c; font-size: 18px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .stat { padding: 22px 16px; text-align: center; border: 2px solid #081e3f; background: #fafafa; }
+    .stat strong { display: block; margin-bottom: 10px; color: #081e3f; font-size: 38px; line-height: 1; }
+    .stat span { font-size: 14px; }
+    .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .step { padding: 20px; background: #f1f4f8; border: 1px solid #bbc4d0; }
+    .number { display: inline-block; width: 30px; height: 30px; margin-bottom: 12px; border-radius: 50%; background: #081e3f; color: white; text-align: center; line-height: 30px; font-weight: bold; }
+    .personal { padding: 24px; background: #081e3f; color: white; }
+    .personal h2 { color: #ffcc33; border-color: #ffcc33; }
+    ul { margin: 0; padding-left: 24px; }
+    li { margin-bottom: 10px; }
+    .actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .action { padding: 16px; border-left: 5px solid #b6862c; background: #f5f5f5; }
+    .sources { padding-top: 28px; border-top: 1px solid #bbb; font-size: 13px; }
+    .sources a { color: #0645ad; word-break: break-word; }
+    footer { padding: 20px 45px; background: #eee; color: #555; font-size: 13px; }
+    @media (max-width: 650px) {
+      header, main { padding: 28px 22px; }
+      .stats, .steps, .actions { grid-template-columns: 1fr; }
+      footer { padding: 18px 22px; }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav shell"><a class="brand" href="#top"><b>FS</b> TECH FIELD GUIDE</a><span class="live"><i></i> LIVE SIGNAL</span></nav>
-  <main>
-    <section class="hero shell" id="top">
-      <div><p class="eyebrow">THE TECHNOLOGY BEHIND THE NEXT CLICK</p><h1>Your feed is<br><em>not neutral.</em></h1><p class="lede">Every video, search, pause, and like becomes a clue. Recommendation systems use those clues to predict what will keep us watching, and that prediction quietly shapes what we see next.</p><a class="jump" href="#loop">SEE HOW THE LOOP WORKS ↓</a></div>
-      <div class="signal" aria-label="97 percent of U.S. teens use the internet every day"><div class="orbit"></div><div class="orbit two"></div><div class="disc"><strong>97%</strong><span>OF U.S. TEENS<br>GO ONLINE DAILY</span></div><span class="tag t1">WATCH TIME</span><span class="tag t2">LIKES</span><span class="tag t3">SEARCHES</span><span class="tag t4">SKIPS</span></div>
-    </section>
-    <section class="personal"><div class="shell"><span class="quote">“</span><p>For me, the easiest example is soccer and gaming. I can click one EA FC video after a match, and suddenly my homepage is packed with tactics, highlights, pack openings, and reactions. It feels like I chose the feed, but the feed is also choosing for me.</p></div></section>
-    <section class="section shell" id="loop"><div class="heading"><p class="eyebrow">ONE CLICK BECOMES A LOOP</p><h2>How the system learns you</h2><p>YouTube says its recommendations learn from more than 80 billion signals. Here is the basic cycle.</p></div><div class="loop">
-      <article class="card"><span class="num">01</span><div class="icon">↗</div><h3>You act</h3><p>You click, watch, search, like, skip, or say “not interested.”</p></article>
-      <article class="card"><span class="num">02</span><div class="icon">▥</div><h3>It collects signals</h3><p>The platform compares your behavior with patterns from similar viewers.</p></article>
-      <article class="card"><span class="num">03</span><div class="icon">≡</div><h3>It ranks options</h3><p>Videos most likely to earn your click and keep your attention rise to the top.</p></article>
-      <article class="card"><span class="num">04</span><div class="icon">↻</div><h3>You get more</h3><p>Your next feed reinforces the pattern and gives the system new data.</p></article>
-    </div></section>
-    <section class="section dark"><div class="shell"><div class="heading"><p class="eyebrow">WHY THIS MATTERS NOW</p><h2>Attention is the real scoreboard.</h2></div><div class="stats">
-      <article class="stat"><strong>~3 in 4</strong><p>U.S. teens use YouTube every day.</p><small>PEW RESEARCH CENTER, 2025</small></article>
-      <article class="stat"><strong>~1 in 5</strong><p>say they are on YouTube almost constantly.</p><small>PEW RESEARCH CENTER, 2025</small></article>
-      <article class="stat"><strong>85% / 41%</strong><p>play video games; 41% play at least once a day.</p><small>PEW RESEARCH CENTER, 2024</small></article>
-    </div><p class="note">Algorithms can be useful: they help us find creators, communities, and games we actually enjoy. The problem is that convenience can hide the trade. Our attention and personal data help decide what gets amplified. Targeted advertising also rewards platforms for learning as much as possible about us.</p></div></section>
-    <section class="section shell"><div class="heading"><p class="eyebrow">THE BIGGER EFFECT</p><h2>What starts as entertainment can shape...</h2></div><div class="stakes"><article><span>01</span><h3>Our time</h3><p>Autoplay and an endless feed remove the natural moment when we would normally decide to stop.</p></article><article><span>02</span><h3>Our view</h3><p>If the system keeps showing what already holds our attention, different ideas become easier to miss.</p></article><article><span>03</span><h3>Our choices</h3><p>Repeated recommendations can make a product, opinion, or trend feel more popular or more inevitable than it really is.</p></article></div><div class="future"><b>THE EXTREME OUTCOME</b><p>If this keeps getting more personalized, the future may not look like technology forcing us to do something. It may look like technology becoming so good at predicting us that we stop noticing when a suggestion becomes a decision.</p></div></section>
-    <section class="control"><div class="shell controlgrid"><div><p class="eyebrow">TAKE BACK THE CONTROLLER</p><h2>Make the feed work for you.</h2><p class="controlintro">We do not have to delete every app or stop enjoying technology. A few intentional moves can put some friction back into the loop.</p></div><ol class="actions"><li><span>01</span><div><strong>Choose before you open.</strong><p>Know what you came to watch instead of letting the homepage decide.</p></div></li><li><span>02</span><div><strong>Train it on purpose.</strong><p>Use “Not interested,” remove accidental watches, and pause history when researching.</p></div></li><li><span>03</span><div><strong>Build a stopping point.</strong><p>Turn off autoplay or decide “one match, one video” before starting.</p></div></li><li><span>04</span><div><strong>Step outside the feed.</strong><p>Use subscriptions, direct search, and sources that do not already match your usual view.</p></div></li></ol></div></section>
-  </main>
-  <footer class="footer shell"><div><p class="eyebrow">SOURCES</p><ol class="sources"><li><a href="https://www.pewresearch.org/internet/2025/12/09/teens-social-media-and-ai-chatbots-2025/">Pew Research Center, Teens, Social Media and AI Chatbots 2025</a></li><li><a href="https://www.pewresearch.org/internet/2024/05/09/teens-and-video-games-today/">Pew Research Center, Teens and Video Games Today (2024)</a></li><li><a href="https://support.google.com/youtube/answer/16089387">YouTube Help, How YouTube recommendations work</a></li><li><a href="https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-staff-report-finds-large-social-media-video-streaming-companies-have-engaged-vast-surveillance">FTC, Social Media and Video Streaming Report (2024)</a></li></ol></div><div class="sign"><b>YOUR FEED IS NOT NEUTRAL</b><p>A visual field guide by Felix Santana · 2026</p></div></footer>
+  <div class="page">
+    <header>
+      <small>DEV BLOG 3 INFOGRAPHIC</small>
+      <h1>Recommendation Algorithms and My Feed</h1>
+      <p>How platforms like YouTube learn what I like and use that information to choose what I see next.</p>
+    </header>
+
+    <main>
+      <section class="intro">
+        <strong>Main idea:</strong> My feed is personalized, but it is not neutral. Every video I watch, search, like, or skip gives the platform information about what might keep my attention.
+      </section>
+
+      <section>
+        <h2>Why this matters right now</h2>
+        <div class="stats">
+          <div class="stat"><strong>97%</strong><span>of U.S. teens use the internet every day</span></div>
+          <div class="stat"><strong>3 in 4</strong><span>teens use YouTube daily</span></div>
+          <div class="stat"><strong>85%</strong><span>of teens play video games</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How recommendations work</h2>
+        <div class="steps">
+          <div class="step"><span class="number">1</span><h3>I do something</h3><p>I watch, search, like, skip, or click a video.</p></div>
+          <div class="step"><span class="number">2</span><h3>The platform collects signals</h3><p>It learns from my watch history and compares my activity with similar users.</p></div>
+          <div class="step"><span class="number">3</span><h3>The system ranks videos</h3><p>It predicts which videos I am most likely to click and enjoy.</p></div>
+          <div class="step"><span class="number">4</span><h3>My feed changes</h3><p>I receive more similar content, which gives the system even more information.</p></div>
+        </div>
+      </section>
+
+      <section class="personal">
+        <h2>My personal example</h2>
+        <p>I see this with soccer, gaming, and EA FC videos. If I watch one video after a match, my homepage can quickly fill with highlights, tactics, pack openings, and reactions. I chose the first video, but the algorithm helps choose what I see after that.</p>
+      </section>
+
+      <section>
+        <h2>Why I think it is important</h2>
+        <ul>
+          <li><strong>Time:</strong> Autoplay and endless recommendations make it easy to keep watching longer than I planned.</li>
+          <li><strong>Information:</strong> Seeing similar content repeatedly can make other ideas easier to miss.</li>
+          <li><strong>Choices:</strong> Repeated recommendations can make a product, trend, or opinion look more popular than it really is.</li>
+          <li><strong>Privacy:</strong> Platforms collect information about our activity to improve recommendations and advertising.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I can do</h2>
+        <div class="actions">
+          <div class="action">Search for what I actually want instead of only using the homepage.</div>
+          <div class="action">Use the Not interested option when a recommendation does not fit me.</div>
+          <div class="action">Turn off autoplay and decide when I want to stop watching.</div>
+          <div class="action">Look at sources and opinions outside of my normal feed.</div>
+        </div>
+      </section>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <p><a href="https://www.pewresearch.org/internet/2025/12/09/teens-social-media-and-ai-chatbots-2025/">Pew Research Center, Teens, Social Media and AI Chatbots 2025</a></p>
+        <p><a href="https://www.pewresearch.org/internet/2024/05/09/teens-and-video-games-today/">Pew Research Center, Teens and Video Games Today</a></p>
+        <p><a href="https://support.google.com/youtube/answer/16089387">YouTube Help, How YouTube recommendations work</a></p>
+        <p><a href="https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-staff-report-finds-large-social-media-video-streaming-companies-have-engaged-vast-surveillance">Federal Trade Commission, Social Media and Video Streaming Report</a></p>
+      </section>
+    </main>
+
+    <footer>Created by Felix Santana for Dev Blog 3</footer>
+  </div>
 </body>
 </html>
